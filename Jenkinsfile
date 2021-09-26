@@ -5,6 +5,7 @@ podTemplate(containers: [
         command: 'sleep',  
         args: '30d' 
         ), 
+	volumeMounts: [ name: 'jenkins-data' , mountPath: '/root/.m2/repository' ],
   ]) { 
  
     node(POD_LABEL) { 

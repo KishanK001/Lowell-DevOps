@@ -5,7 +5,9 @@ podTemplate(containers: [
         command: 'sleep',  
         args: '30d',)
 	],
-	volumes: [ claimName: 'jenkins-pv-claim' , mountPath: '/root/.m2/repository' ],	
+	volumes: [ 
+	  persistentVolumeClaim(claimName: 'jenkins-pv-claim' , mountPath: '/root/.m2/repository' )
+	  ],	
 	) {  
     node(POD_LABEL) { 
         stage('Get a Maven project') { 

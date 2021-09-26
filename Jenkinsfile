@@ -3,9 +3,10 @@ podTemplate(containers: [
         name: 'maven',  
         image: 'maven:3.8.1-jdk-8',  
         command: 'sleep',  
-        args: '30d' 
+        args: '30d',
+        volumeMounts: [ name: 'jenkins-data' , mountPath: '/root/.m2/repository' ],	
         ), 
-	volumeMounts: [ name: 'jenkins-data' , mountPath: '/root/.m2/repository' ],
+	
   ]) { 
  
     node(POD_LABEL) { 
